@@ -1,27 +1,25 @@
-import Particles from "react-tsparticles"
+import { useEffect } from 'react'
 
-export default function ParticlesBg() {
+export default function BackgroundDecor() {
+  useEffect(() => {
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      const progress = max > 0 ? window.scrollY / max : 0
+      document.documentElement.style.setProperty('--scroll-flow', progress.toFixed(3))
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <Particles
-      options={{
-        background: { color: "#0f0f0f" },
-        particles: {
-          number: { value: 80 },
-          color: { value: "#7c3aed" },
-          links: {
-            enable: true,
-            color: "#7c3aed",
-            distance: 150
-          },
-          move: { enable: true, speed: 1 },
-          size: { value: 2 }
-        }
-      }}
-      style={{
-        position: "fixed",
-        top: 0,
-        zIndex: -1
-      }}
-    />
+    <div className="canvas-bg" aria-hidden="true">
+      <div className="blob blob-a" />
+      <div className="blob blob-b" />
+      <div className="blob blob-c" />
+      <div className="aurora" />
+      <div className="noise" />
+    </div>
   )
 }
