@@ -1,29 +1,22 @@
+const jobs = [
+  ['DevOps Specialist — RTC S.P.A.', 'Stage · Mag 2025 - Presente · Verona'],
+  ['Tecnico Supporto IT', 'Studio Legale Talamini & De Thomasis'],
+  ['Servizi IT Freelance', '2019 - Presente'],
+]
+
 export default function Experience() {
   return (
-    <section className="section">
-
-      <h2>Experience</h2>
-
-      <div className="job">
-        <h3>DevOps Specialist — RTC S.P.A.</h3>
-        <p>Stage · Mag 2025 - Presente · Verona</p>
-        <p>Gestione sistemi, Docker, Kubernetes e infrastrutture DevOps.</p>
+    <section className="section" id="experience">
+      <span className="section-tag fade-up">04 · Journey</span>
+      <h2>Experience Timeline</h2>
+      <div className="timeline">
+        {jobs.map(([role, meta], i) => (
+          <div key={role} className="timeline-item fade-up" style={{ animationDelay: `${i * 90}ms` }}>
+            <h3>{role}</h3>
+            <p>{meta}</p>
+          </div>
+        ))}
       </div>
-
-      <div className="job">
-        <h3>Tecnico Supporto IT</h3>
-        <p>Studio Legale Talamini & De Thomasis</p>
-        <p>Sviluppo gestionali personalizzati e supporto IT.</p>
-      </div>
-
-      <div className="job">
-        <h3>Servizi IT Freelance</h3>
-        <p>2019 - Presente</p>
-        <p>
-          Hosting e sviluppo siti web su server personale e consulenza IT.
-        </p>
-      </div>
-
     </section>
   )
 }
